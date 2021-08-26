@@ -19,8 +19,8 @@ mongoose.connect(MONGODB_URI, {
     useFindAndModify: false,
 });
 
-app.use(require("./routes/apiRoutes.js"));
-app.use(require("./routes/htmlRoutes.js"));
+require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);
 
 app.listen(PORT,function(){
     console.log(`App listening on Port ${PORT}`);
