@@ -1,8 +1,8 @@
-const workout = require("../models/workout");
+const Workout = require("../models/workout");
 
 module.exports = function(app){
     app.get("/api/workouts", function(req,res){
-        workout.find()
+        Workout.find()
         .then(data => {
             res.json(data)
         })
@@ -11,8 +11,8 @@ module.exports = function(app){
         })
     });
 
-    app.get("/api/workouts", function(req,res){
-        workout.create({})
+    app.post("/api/workouts", function(req,res){
+        Workout.create({})
         .then(data => res.json(data))
         .catch(err => {
             res.json(err)
@@ -20,7 +20,7 @@ module.exports = function(app){
     });
 
     app.get("/api/workouts/range", function(req,res){
-        workout.find()
+        Workout.find()
         .then(data => {
             res.json(data)
         })
@@ -29,8 +29,8 @@ module.exports = function(app){
         })
     });
 
-    app.get("/api/workouts/range",function (req,res){
-        workout.create({})
+    app.post("/api/workouts/range",function (req,res){
+        Workout.create({})
         .then(data => 
             res.json(data)
         )
@@ -39,14 +39,14 @@ module.exports = function(app){
         })
     });
 
-    app.get("/api/workouts/:id",({body,params},res) => {
-        workout.findByIdAndUpdate(
+    app.put("/api/workouts/:id",({body,params},res) => {
+        Workout.findByIdAndUpdate(
             params.id,
             {$push:{exercises:body}},
             {new: true,runValidators:true}
         )
         .then(data => res.json(data))
-        .cath(err => {
+        .catch(err => {
             res.json(err)
         })
     });
