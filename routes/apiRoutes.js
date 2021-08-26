@@ -29,17 +29,17 @@ module.exports = function(app){
         })
     });
 
-    app.post("/api/workouts/range", function(req,res){
+    app.get("/api/workouts/range",function (req,res){
         workout.create({})
-        .then(data => {
+        .then(data => 
             res.json(data)
-        })
+        )
         .catch(err => {
             res.json(err)
         })
     });
 
-    app.put("/api/workouts/:id", ({body,params},res) => {
+    app.get("/api/workouts/:id",({body,params},res) => {
         workout.findByIdAndUpdate(
             params.id,
             {$push:{exercises:body}},
