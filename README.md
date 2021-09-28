@@ -1,4 +1,4 @@
-# Fitness_Tracker
+# fitness-tracker
 
 ## Table of Contents
 
